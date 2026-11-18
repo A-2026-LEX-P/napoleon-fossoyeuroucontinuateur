@@ -1,0 +1,1281 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Napoléon : héritier ou fossoyeur de la Révolution ?</title>
+
+<style>
+:root {
+  --blue: #294c70;
+  --blue-light: #eaf1f8;
+  --green: #287b58;
+  --green-light: #e8f4ed;
+  --red: #ad4141;
+  --red-light: #faeeee;
+  --gold: #c18b38;
+  --cream: #f7f5f0;
+  --ink: #263342;
+  --muted: #687687;
+  --white: #ffffff;
+  --border: #dce2e8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.65;
+}
+
+header {
+  background: linear-gradient(135deg, #203c5b, #426b8e);
+  color: white;
+  padding: 55px 20px 45px;
+  text-align: center;
+}
+
+header .eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  opacity: .85;
+}
+
+header h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 1.2;
+  max-width: 850px;
+  margin: 18px auto;
+}
+
+header p {
+  max-width: 680px;
+  margin: auto;
+  font-size: 17px;
+}
+
+.container {
+  max-width: 950px;
+  margin: auto;
+  padding: 25px 18px 60px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 10px;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav a {
+  color: var(--blue);
+  text-decoration: none;
+  padding: 8px 13px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+nav a:hover { background: var(--blue-light); }
+
+section {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: clamp(18px, 4vw, 32px);
+  margin: 25px 0;
+  box-shadow: 0 3px 12px rgba(0,0,0,.035);
+  scroll-margin-top: 85px;
+}
+
+h2 {
+  color: var(--blue);
+  font-family: Georgia, serif;
+  font-size: 27px;
+  line-height: 1.3;
+  margin-top: 0;
+}
+
+h3 {
+  color: var(--blue);
+  margin-top: 28px;
+}
+
+p { margin: 12px 0; }
+
+.lead {
+  font-size: 18px;
+  color: #46566a;
+}
+
+.intro-box {
+  background: var(--blue-light);
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.mission-label {
+  display: inline-block;
+  background: var(--gold);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.timeline {
+  border-left: 3px solid var(--gold);
+  margin: 25px 0 25px 12px;
+  padding-left: 22px;
+}
+
+.timeline-item {
+  position: relative;
+  margin: 25px 0;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 7px;
+  width: 13px;
+  height: 13px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.date {
+  font-size: 21px;
+  font-weight: bold;
+  color: var(--blue);
+}
+
+.visual {
+  background: linear-gradient(135deg, #e5edf4, #f4eee2);
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 48px;
+}
+
+.visual p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.question {
+  background: #f7f9fb;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  margin: 18px 0;
+}
+
+.question label {
+  display: block;
+  margin: 9px 0;
+  cursor: pointer;
+}
+
+.question input {
+  margin-right: 8px;
+  accent-color: var(--blue);
+}
+
+button {
+  background: var(--blue);
+  color: white;
+  border: 0;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover { background: #183650; }
+
+.feedback {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  display: none;
+}
+
+.correct {
+  display: block;
+  background: var(--green-light);
+  color: #236744;
+}
+
+.incorrect {
+  display: block;
+  background: var(--red-light);
+  color: #963b3b;
+}
+
+.remember {
+  background: #fff8e9;
+  border-left: 4px solid var(--gold);
+  padding: 17px 20px;
+  margin: 22px 0;
+  border-radius: 5px;
+}
+
+.green-box {
+  background: var(--green-light);
+  border-left: 4px solid var(--green);
+  padding: 17px;
+  border-radius: 7px;
+  margin: 15px 0;
+}
+
+.red-box {
+  background: var(--red-light);
+  border-left: 4px solid var(--red);
+  padding: 17px;
+  border-radius: 7px;
+  margin: 15px 0;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.column-card {
+  padding: 18px;
+  border-radius: 12px;
+}
+
+.column-card h3 { margin-top: 0; }
+
+.small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+select {
+  padding: 9px;
+  border: 1px solid #bdc9d4;
+  border-radius: 7px;
+  background: white;
+  color: var(--ink);
+  max-width: 100%;
+  font-size: 14px;
+}
+
+.result {
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+footer {
+  background: #203c5b;
+  color: white;
+  padding: 25px;
+  text-align: center;
+  font-size: 13px;
+}
+
+@media(max-width:600px) {
+  .two-columns { grid-template-columns: 1fr; }
+  nav { position: static; }
+  header { padding: 38px 18px; }
+}
+
+@media print {
+  body { background: white; }
+  nav, button { display: none !important; }
+  section { box-shadow: none; break-inside: avoid; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="eyebrow">Histoire · Première STI2D / STI2A</div>
+  <h1>Napoléon : héritier ou fossoyeur de la Révolution française ?</h1>
+  <p>Un parcours pour découvrir comment Napoléon conserve certains acquis de la Révolution tout en instaurant un pouvoir autoritaire.</p>
+</header>
+
+<nav>
+  <a href="#depart">Introduction</a>
+  <a href="#mission1">Mission 1</a>
+  <a href="#mission2">Mission 2</a>
+  <a href="#mission3">Mission 3</a>
+  <a href="#bilan">Bilan</a>
+</nav>
+
+<main class="container">
+
+<section id="depart">
+  <div class="mission-label">AVANT DE COMMENCER</div>
+  <h2>Une question à résoudre</h2>
+
+  <p class="lead">Napoléon est un personnage historique qui suscite des jugements contradictoires.</p>
+
+  <div class="two-columns">
+    <div class="column-card green-box">
+      <div style="font-size:38px">⚖️</div>
+      <h3>Napoléon, héritier de la Révolution ?</h3>
+      <p>Il conserve certaines réformes révolutionnaires et les diffuse dans une partie de l'Europe.</p>
+    </div>
+    <div class="column-card red-box">
+      <div style="font-size:38px">👑</div>
+      <h3>Napoléon, fossoyeur de la Révolution ?</h3>
+      <p>Il devient empereur, concentre les pouvoirs et limite les libertés.</p>
+    </div>
+  </div>
+
+  <div class="intro-box">
+    <strong>Votre mission :</strong>
+    <p>Vous allez mener une enquête historique pour comprendre cette contradiction et répondre à la question :</p>
+    <p style="font-size:20px;font-weight:bold;text-align:center;color:var(--blue)">Comment Napoléon peut-il à la fois poursuivre la Révolution française et mettre fin à certains de ses idéaux ?</p>
+  </div>
+
+  <h3>Comment travailler ?</h3>
+  <ol>
+    <li>Lisez attentivement les explications de chaque mission.</li>
+    <li>Réalisez les petits exercices pour vérifier votre compréhension.</li>
+    <li>Notez les informations importantes dans votre cahier.</li>
+    <li>À la fin du parcours, vous réaliserez une activité documentaire et une réponse argumentée.</li>
+  </ol>
+</section>
+
+<section id="mission1">
+  <div class="mission-label">MISSION 1 · COMPRENDRE</div>
+  <h2>De la Révolution à l'Empire : Napoléon prend le pouvoir</h2>
+
+  <p class="lead">Objectif : comprendre comment Napoléon devient progressivement le maître de la France.</p>
+
+  <h3>A. Petit rappel : que voulait la Révolution française ?</h3>
+
+  <p>En 1789, les Français se révoltent contre la monarchie absolue et les privilèges de la société d'Ancien Régime.</p>
+
+  <p>Ils souhaitent notamment :</p>
+  <ul>
+    <li>Mettre fin aux privilèges.</li>
+    <li>Être égaux devant la loi.</li>
+    <li>Participer à la vie politique.</li>
+    <li>Disposer de libertés fondamentales.</li>
+    <li>Faire en sorte que le pouvoir appartienne à la nation et non plus uniquement au roi.</li>
+  </ul>
+
+  <div class="visual">
+    🇫🇷 ⚖️ 🗣️
+    <p>Liberté, égalité et souveraineté de la nation : des principes essentiels de la Révolution.</p>
+  </div>
+
+  <h3>B. Napoléon prend progressivement le pouvoir</h3>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="date">1799 : le coup d'État du 18 Brumaire</div>
+      <p>Napoléon Bonaparte renverse le gouvernement par un coup d'État. Il devient Premier consul et dirige le pays.</p>
+      <p><strong>Un coup d'État :</strong> prise du pouvoir par la force, en dehors des règles politiques habituelles.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="date">1802 : le Consulat à vie</div>
+      <p>Napoléon devient consul à vie. Son pouvoir se renforce : il peut notamment choisir son successeur.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="date">1804 : la naissance de l'Empire</div>
+      <p>Napoléon devient empereur des Français sous le nom de Napoléon Ier. Le pouvoir devient héréditaire : il doit être transmis dans sa famille.</p>
+    </div>
+  </div>
+
+  <div class="remember">
+    <strong>Vocabulaire à retenir</strong>
+    <p><strong>Empire :</strong> régime politique dirigé par un empereur.</p>
+    <p><strong>Héréditaire :</strong> qui se transmet au sein d'une même famille, de génération en génération.</p>
+  </div>
+
+  <h3>C. À vous de jouer !</h3>
+  <p>Répondez aux trois questions suivantes pour vérifier que vous avez compris.</p>
+
+  <div class="question" id="quiz1">
+    <p><strong>1. En quelle année Napoléon prend-il le pouvoir par un coup d'État ?</strong></p>
+    <label><input type="radio" name="q1" value="a"> 1789</label>
+    <label><input type="radio" name="q1" value="b"> 1792</label>
+    <label><input type="radio" name="q1" value="c"> 1799</label>
+    <label><input type="radio" name="q1" value="d"> 1804</label>
+    <div class="feedback" id="f1"></div>
+
+    <p><strong>2. En quelle année Napoléon devient-il empereur ?</strong></p>
+    <label><input type="radio" name="q2" value="a"> 1799</label>
+    <label><input type="radio" name="q2" value="b"> 1802</label>
+    <label><input type="radio" name="q2" value="c"> 1804</label>
+    <label><input type="radio" name="q2" value="d"> 1815</label>
+    <div class="feedback" id="f2"></div>
+
+    <p><strong>3. Que signifie un pouvoir héréditaire ?</strong></p>
+    <label><input type="radio" name="q3" value="a"> Le peuple élit le dirigeant.</label>
+    <label><input type="radio" name="q3" value="b"> Le pouvoir se transmet dans une famille.</label>
+    <label><input type="radio" name="q3" value="c"> Le dirigeant est choisi par les députés.</label>
+    <div class="feedback" id="f3"></div>
+
+    <button onclick="checkQuiz1()">Vérifier mes réponses</button>
+    <div class="result" id="score1"></div>
+  </div>
+
+  <div class="remember">
+    <strong>À retenir :</strong>
+    <p>En 1799, Napoléon prend le pouvoir par un coup d'État. En 1804, il devient empereur. Son pouvoir devient personnel et héréditaire.</p>
+  </div>
+</section>
+
+<section id="mission2">
+  <div class="mission-label">MISSION 2 · ANALYSER</div>
+  <h2>Napoléon conserve-t-il les idées de la Révolution ?</h2>
+
+  <p class="lead">Objectif : découvrir ce que Napoléon conserve de la Révolution française, mais aussi les libertés qu'il remet en cause.</p>
+
+  <h3>A. Le Code civil : les mêmes lois pour tous</h3>
+
+  <div class="visual">
+    ⚖️ 📖
+    <p>Le Code civil des Français, adopté en 1804.</p>
+  </div>
+
+  <p>Avant la Révolution, les règles de droit étaient différentes selon les régions et les catégories sociales.</p>
+
+  <p>En 1804, Napoléon fait adopter le <strong>Code civil</strong>, un recueil de lois qui organise la vie des individus en France.</p>
+
+  <p>Ce code fixe notamment :</p>
+  <ul>
+    <li>L'égalité des citoyens devant la loi.</li>
+    <li>La protection de la propriété privée.</li>
+    <li>La liberté de conclure des contrats.</li>
+    <li>La fin des privilèges juridiques liés à la naissance.</li>
+  </ul>
+
+  <div class="green-box">
+    <strong>Un héritage de la Révolution :</strong>
+    <p>Les mêmes lois s'appliquent désormais à tous les citoyens, quelle que soit leur origine sociale ou leur région. C'est un principe essentiel de la Révolution française.</p>
+  </div>
+
+  <h3>Mais le Code civil présente aussi des limites !</h3>
+
+  <p>Les femmes mariées ne disposent pas des mêmes droits que les hommes. Elles sont placées sous l'autorité de leur mari.</p>
+
+  <p>L'article 213 du Code civil affirme :</p>
+
+  <div class="intro-box">
+    <p style="font-family:Georgia,serif;font-size:19px;text-align:center">« Le mari doit protection à sa femme, la femme obéissance à son mari. »</p>
+  </div>
+
+  <p>Les femmes mariées ont notamment besoin de l'autorisation de leur mari pour accomplir certains actes importants de la vie civile.</p>
+
+  <div class="red-box">
+    <strong>Une limite à l'égalité :</strong>
+    <p>Le Code civil conserve l'égalité devant la loi sur certains points, mais maintient de profondes inégalités entre les hommes et les femmes.</p>
+  </div>
+
+  <div class="question">
+    <p><strong>Petite question : le Code civil est-il entièrement révolutionnaire ?</strong></p>
+    <label><input type="radio" name="codecivil" value="a"> Oui, il donne exactement les mêmes droits à tous.</label>
+    <label><input type="radio" name="codecivil" value="b"> Non, il conserve certains principes révolutionnaires, mais maintient des inégalités, notamment entre les hommes et les femmes.</label>
+    <button onclick="checkCode()">Valider</button>
+    <div class="feedback" id="codeFeedback"></div>
+  </div>
+
+  <h3>B. Des réformes qui modernisent la France</h3>
+
+  <p>Napoléon met en place de nombreuses institutions qui renforcent l'organisation de l'État.</p>
+
+  <div class="two-columns">
+    <div class="column-card" style="background:#edf3f8">
+      <div style="font-size:35px">🏛️</div>
+      <h3>Les préfets</h3>
+      <p>Ils représentent le pouvoir de Napoléon dans chaque département et veillent à l'application des décisions du gouvernement.</p>
+    </div>
+
+    <div class="column-card" style="background:#edf3f8">
+      <div style="font-size:35px">🏦</div>
+      <h3>La Banque de France</h3>
+      <p>Créée en 1800, elle contribue à stabiliser les finances et à organiser le système monétaire.</p>
+    </div>
+
+    <div class="column-card" style="background:#edf3f8">
+      <div style="font-size:35px">📚</div>
+      <h3>Le Code civil</h3>
+      <p>Il unifie les lois sur le territoire français et consolide certains acquis de la Révolution.</p>
+    </div>
+
+    <div class="column-card" style="background:#edf3f8">
+      <div style="font-size:35px">🏅</div>
+      <h3>La Légion d'honneur</h3>
+      <p>Créée en 1802, elle récompense les personnes qui ont rendu des services importants à la nation.</p>
+    </div>
+  </div>
+
+  <p>Ces réformes permettent de construire un État plus organisé, plus efficace et plus puissant.</p>
+
+  <h3>C. Un empereur qui limite les libertés</h3>
+
+  <div class="visual">
+    👑 📰 🚔
+    <p>Un pouvoir personnel qui surveille et contrôle la société.</p>
+  </div>
+
+  <p>Napoléon ne souhaite pas que ses opposants puissent remettre en cause son pouvoir. Il limite donc plusieurs libertés.</p>
+
+  <ul>
+    <li><strong>La liberté de la presse :</strong> les journaux sont surveillés et censurés.</li>
+    <li><strong>La liberté d'expression :</strong> les critiques contre l'empereur sont réprimées.</li>
+    <li><strong>La liberté politique :</strong> les assemblées disposent de pouvoirs très limités.</li>
+    <li><strong>La liberté d'opposition :</strong> la police surveille les opposants et peut les arrêter.</li>
+  </ul>
+
+  <p>Napoléon concentre les pouvoirs entre ses mains : il dirige le gouvernement, contrôle les institutions et intervient dans la fabrication des lois.</p>
+
+  <div class="intro-box">
+    <strong>Un document historique</strong>
+    <p>En 1805, Napoléon écrit à Joseph Fouché, son ministre de la Police :</p>
+    <p style="font-family:Georgia,serif;font-style:italic">« Je ne souffrirai jamais que les journaux disent ni fassent rien contre mes intérêts. »</p>
+    <p class="small">Lettre de Napoléon Ier à Joseph Fouché, 1805.</p>
+  </div>
+
+  <p>Cette phrase montre que l'empereur veut contrôler les informations diffusées dans le pays et empêcher les critiques contre son gouvernement.</p>
+
+  <div class="red-box">
+    <strong>Un régime autoritaire :</strong>
+    <p>Un régime autoritaire est un régime politique dans lequel le pouvoir est concentré entre les mains d'un dirigeant ou d'un petit groupe, et où les libertés politiques sont limitées.</p>
+  </div>
+
+  <h3>D. À vous de jouer : révolutionnaire ou autoritaire ?</h3>
+
+  <p>Pour chaque situation, choisissez la catégorie qui convient le mieux.</p>
+
+  <div class="question" id="classement">
+    <p><strong>1. Tous les citoyens sont égaux devant la loi.</strong></p>
+    <select id="cl1">
+      <option value="">Choisissez votre réponse</option>
+      <option value="rev">Principe révolutionnaire</option>
+      <option value="aut">Pouvoir autoritaire</option>
+    </select>
+    <div class="feedback" id="cf1"></div>
+
+    <p><strong>2. Les journaux qui critiquent Napoléon sont censurés.</strong></p>
+    <select id="cl2">
+      <option value="">Choisissez votre réponse</option>
+      <option value="rev">Principe révolutionnaire</option>
+      <option value="aut">Pouvoir autoritaire</option>
+    </select>
+    <div class="feedback" id="cf2"></div>
+
+    <p><strong>3. Les lois sont les mêmes dans toute la France.</strong></p>
+    <select id="cl3">
+      <option value="">Choisissez votre réponse</option>
+      <option value="rev">Principe révolutionnaire</option>
+      <option value="aut">Pouvoir autoritaire</option>
+    </select>
+    <div class="feedback" id="cf3"></div>
+
+    <p><strong>4. Napoléon concentre les pouvoirs entre ses mains.</strong></p>
+    <select id="cl4">
+      <option value="">Choisissez votre réponse</option>
+      <option value="rev">Principe révolutionnaire</option>
+      <option value="aut">Pouvoir autoritaire</option>
+    </select>
+    <div class="feedback" id="cf4"></div>
+
+    <p><strong>5. Le Code civil place les femmes mariées sous l'autorité de leur mari.</strong></p>
+    <select id="cl5">
+      <option value="">Choisissez votre réponse</option>
+      <option value="rev">Principe révolutionnaire</option>
+      <option value="lim">Une limite à l'égalité</option>
+      <option value="aut">Pouvoir autoritaire</option>
+    </select>
+    <div class="feedback" id="cf5"></div>
+
+    <button onclick="checkClassement()">Corriger mes réponses</button>
+    <div class="result" id="scoreClassement"></div>
+  </div>
+
+  <div class="remember">
+    <strong>À retenir :</strong>
+    <p>Napoléon conserve des principes de la Révolution, notamment l'égalité devant la loi et la protection de la propriété. Mais il limite les libertés politiques et concentre les pouvoirs entre ses mains. Le Code civil maintient également des inégalités entre les hommes et les femmes.</p>
+  </div>
+</section>
+
+<section id="mission3">
+  <div class="mission-label">MISSION 3 · DÉCOUVRIR</div>
+  <h2>Napoléon conquiert l'Europe : diffuse-t-il la Révolution ?</h2>
+
+  <p class="lead">Objectif : comprendre comment Napoléon diffuse certains principes révolutionnaires en Europe, tout en imposant sa domination.</p>
+
+  <h3>A. Un Empire immense</h3>
+
+  <div class="visual">
+    🗺️ 🌍 ⚔️
+    <p>L'Europe sous la domination de Napoléon au début du XIXe siècle.</p>
+  </div>
+
+  <p>Entre 1804 et 1811, Napoléon conquiert une grande partie de l'Europe.</p>
+
+  <p>Il étend l'Empire français et place plusieurs territoires sous son contrôle. Certains sont directement intégrés à la France. D'autres deviennent des États dépendants de Napoléon.</p>
+
+  <p>Dans plusieurs de ces États, il place des membres de sa famille ou des souverains qui lui sont fidèles.</p>
+
+  <div class="remember">
+    <strong>Attention :</strong>
+    <p>Tous les territoires dominés par Napoléon ne font pas partie de la France. Certains conservent leur propre nom et leurs institutions, mais doivent obéir à l'empereur français.</p>
+  </div>
+
+  <h3>B. Les principes de la Révolution se diffusent en Europe</h3>
+
+  <p>Dans les territoires conquis, Napoléon impose parfois des réformes inspirées de la Révolution française :</p>
+
+  <ul>
+    <li>L'égalité devant la loi.</li>
+    <li>La suppression de certains privilèges.</li>
+    <li>La fin de certaines obligations féodales.</li>
+    <li>La liberté de religion.</li>
+    <li>De nouvelles règles juridiques inspirées du Code civil.</li>
+  </ul>
+
+  <div class="green-box">
+    <strong>Un exemple : le royaume de Westphalie</strong>
+    <p>En 1807, Napoléon crée le royaume de Westphalie, dans le nord de l'Allemagne actuelle. Il confie ce royaume à son frère Jérôme Bonaparte.</p>
+    <p>Une Constitution est adoptée. Elle prévoit notamment l'égalité de tous les sujets devant la loi et le libre exercice des religions.</p>
+    <p>Ces mesures reprennent certains principes de la Révolution française.</p>
+  </div>
+
+  <h3>C. Une domination contestée</h3>
+
+  <div class="visual">
+    ✊ 🛡️ ⚔️
+    <p>Les peuples européens ne veulent pas tous être dirigés par Napoléon.</p>
+  </div>
+
+  <p>Les conquêtes françaises provoquent des résistances dans plusieurs pays.</p>
+
+  <div class="two-columns">
+    <div class="column-card" style="background:#f8eeee">
+      <h3>🇪🇸 En Espagne</h3>
+      <p>En 1808, une révolte éclate contre l'occupation française. Les Espagnols combattent les troupes de Napoléon.</p>
+    </div>
+    <div class="column-card" style="background:#f8eeee">
+      <h3>🇷🇺 En Russie</h3>
+      <p>En 1812, Napoléon lance une grande campagne militaire. Elle se termine par un désastre pour son armée, qui doit battre en retraite.</p>
+    </div>
+  </div>
+
+  <p>Dans plusieurs territoires, les populations refusent aussi les impôts, les réquisitions et la conscription imposés par la France.</p>
+
+  <div class="red-box">
+    <strong>Une contradiction fondamentale :</strong>
+    <p>Napoléon prétend diffuser les idées de liberté et d'égalité, mais il impose sa domination militaire et politique aux autres peuples. Il ne leur laisse pas librement choisir leur dirigeant.</p>
+  </div>
+
+  <h3>D. À vous de jouer : trouvez l'incohérence !</h3>
+
+  <div class="question">
+    <p>Napoléon affirme vouloir diffuser les principes de la Révolution en Europe. Pourtant, il place son frère Jérôme sur le trône du royaume de Westphalie.</p>
+    <p><strong>Pourquoi est-ce contradictoire ?</strong></p>
+
+    <label><input type="radio" name="paradoxe" value="a"> Parce qu'il impose un roi issu de sa famille au lieu de laisser les habitants choisir leur dirigeant.</label>
+    <label><input type="radio" name="paradoxe" value="b"> Parce qu'il interdit toutes les lois françaises en Europe.</label>
+    <label><input type="radio" name="paradoxe" value="c"> Parce qu'il refuse l'égalité devant la loi dans tous les territoires conquis.</label>
+
+    <button onclick="checkParadoxe()">Valider</button>
+    <div class="feedback" id="paradoxeFeedback"></div>
+  </div>
+
+  <div class="remember">
+    <strong>À retenir :</strong>
+    <p>Napoléon diffuse certains principes de la Révolution en Europe, mais il impose également sa domination militaire et place des membres de sa famille à la tête de plusieurs États.</p>
+  </div>
+</section>
+
+<section id="bilan">
+  <div class="mission-label">BILAN DU PARCOURS</div>
+  <h2>Ce qu'il faut retenir</h2>
+
+  <p>Vous avez découvert les deux visages du régime napoléonien. Voici les éléments essentiels à retenir pour réaliser l'activité documentaire.</p>
+
+  <div class="two-columns">
+    <div class="column-card" style="background:var(--green-light)">
+      <h3 style="color:var(--green)">L'héritage révolutionnaire</h3>
+      <ul>
+        <li>Égalité devant la loi.</li>
+        <li>Fin de certains privilèges.</li>
+        <li>Code civil.</li>
+        <li>Protection de la propriété.</li>
+        <li>Liberté de religion dans certains territoires.</li>
+        <li>Diffusion de réformes en Europe.</li>
+      </ul>
+    </div>
+
+    <div class="column-card" style="background:var(--red-light)">
+      <h3 style="color:var(--red)">Le régime autoritaire</h3>
+      <ul>
+        <li>Pouvoir personnel.</li>
+        <li>Censure de la presse.</li>
+        <li>Surveillance des opposants.</li>
+        <li>Empire héréditaire.</li>
+        <li>Domination militaire en Europe.</li>
+        <li>Libertés politiques limitées.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="intro-box">
+    <h3>La conclusion à retenir</h3>
+    <p style="font-family:Georgia,serif;font-size:19px;text-align:center;color:var(--blue)">
+      Napoléon est à la fois l'héritier de certains acquis de la Révolution et son fossoyeur sur le plan politique.
+    </p>
+  </div>
+
+  <h3>La suite de votre travail : l'activité documentaire</h3>
+
+  <p>Vous allez maintenant mettre en pratique ce que vous avez appris grâce à l'activité 5 :</p>
+
+  <div class="intro-box">
+    <h3>Activité 5 – L'Empire de Napoléon Ier et sa domination en Europe</h3>
+    <p><strong>Problématique :</strong> comment Napoléon diffuse-t-il les principes de la Révolution, tout en instaurant un Empire autoritaire ?</p>
+    <p>À l'aide des quatre documents distribués avec votre cours :</p>
+    <ol>
+      <li>Complétez le tableau en distinguant les principes révolutionnaires conservés et diffusés des pratiques autoritaires de Napoléon.</li>
+      <li>Rédigez une réponse argumentée à la question : « Napoléon, continuateur ou fossoyeur de la Révolution française ? »</li>
+    </ol>
+  </div>
+
+  <h3>La méthode pour réussir votre réponse argumentée</h3>
+
+  <p>Pour répondre à une question argumentée, vous devez présenter des idées, les justifier avec des exemples précis et les expliquer.</p>
+
+  <div class="column-card" style="background:#edf3f8;margin:15px 0">
+    <h3>1. IDÉE</h3>
+    <p>J'annonce ce que je veux démontrer.</p>
+    <p><em>« Tout d'abord, Napoléon conserve certains principes de la Révolution française. »</em></p>
+  </div>
+
+  <div class="column-card" style="background:#e8f4ed;margin:15px 0">
+    <h3>2. EXEMPLE</h3>
+    <p>Je donne une preuve précise tirée des documents ou de mes connaissances.</p>
+    <p><em>« Par exemple, le Code civil de 1804 affirme l'égalité des citoyens devant la loi. »</em></p>
+  </div>
+
+  <div class="column-card" style="background:#fff4e2;margin:15px 0">
+    <h3>3. EXPLICATION</h3>
+    <p>J'explique pourquoi cet exemple permet de justifier mon idée.</p>
+    <p><em>« Cela montre que Napoléon conserve un acquis essentiel de la Révolution : la fin des privilèges devant la loi. »</em></p>
+  </div>
+
+  <div class="remember">
+    <strong>Les mots de liaison utiles :</strong>
+    <p><strong>Pour commencer :</strong> Tout d'abord, premièrement, en premier lieu…</p>
+    <p><strong>Pour ajouter :</strong> Ensuite, de plus, par ailleurs…</p>
+    <p><strong>Pour nuancer ou opposer :</strong> Cependant, mais, pourtant, en revanche…</p>
+    <p><strong>Pour expliquer :</strong> En effet, cela montre que, cela signifie que…</p>
+    <p><strong>Pour conclure :</strong> Ainsi, finalement, pour conclure…</p>
+  </div>
+
+  <h3>Votre verdict : le procès de Napoléon</h3>
+
+  <p>Pour terminer le parcours, classez les six arguments suivants. Napoléon est-il ici plutôt héritier ou fossoyeur de la Révolution ?</p>
+
+  <div class="question" id="jury">
+    <p><strong>1. Le Code civil affirme l'égalité devant la loi.</strong></p>
+    <select id="j1">
+      <option value="">Votre choix</option>
+      <option value="h">Héritier de la Révolution</option>
+      <option value="f">Fossoyeur de la Révolution</option>
+    </select>
+    <div class="feedback" id="jf1"></div>
+
+    <p><strong>2. Napoléon fait censurer les journaux.</strong></p>
+    <select id="j2">
+      <option value="">Votre choix</option>
+      <option value="h">Héritier de la Révolution</option>
+      <option value="f">Fossoyeur de la Révolution</option>
+    </select>
+    <div class="feedback" id="jf2"></div>
+
+    <p><strong>3. Napoléon supprime certains privilèges féodaux dans les territoires conquis.</strong></p>
+    <select id="j3">
+      <option value="">Votre choix</option>
+      <option value="h">Héritier de la Révolution</option>
+      <option value="f">Fossoyeur de la Révolution</option>
+    </select>
+    <div class="feedback" id="jf3"></div>
+
+    <p><strong>4. Napoléon devient empereur et transmet son pouvoir à sa famille.</strong></p>
+    <select id="j4">
+      <option value="">Votre choix</option>
+      <option value="h">Héritier de la Révolution</option>
+      <option value="f">Fossoyeur de la Révolution</option>
+    </select>
+    <div class="feedback" id="jf4"></div>
+
+    <p><strong>5. Napoléon impose sa domination militaire aux peuples européens.</strong></p>
+    <select id="j5">
+      <option value="">Votre choix</option>
+      <option value="h">Héritier de la Révolution</option>
+      <option value="f">Fossoyeur de la Révolution</option>
+    </select>
+    <div class="feedback" id="jf5"></div>
+
+    <p><strong>6. Napoléon garantit la liberté de religion dans certains territoires conquis.</strong></p>
+    <select id="j6">
+      <option value="">Votre choix</option>
+      <option value="h">Héritier de la Révolution</option>
+      <option value="f">Fossoyeur de la Révolution</option>
+    </select>
+    <div class="feedback" id="jf6"></div>
+
+    <button onclick="checkJury()">Rendre mon verdict</button>
+    <div class="result" id="juryScore"></div>
+  </div>
+
+  <div class="intro-box">
+    <h3>Le verdict final</h3>
+    <p>Complétez cette phrase dans votre cahier :</p>
+    <p style="font-family:Georgia,serif;font-size:18px;text-align:center">« Napoléon est à la fois héritier et fossoyeur de la Révolution française, car… »</p>
+  </div>
+
+  <p style="text-align:center;margin-top:30px">
+    <button onclick="window.print()">Imprimer le bilan</button>
+  </p>
+</section>
+
+
+<!-- GALERIE DE DOCUMENTS HISTORIQUES -->
+<section id="documents-visuels">
+
+  <div class="mission-label">DOSSIER ICONOGRAPHIQUE</div>
+  <h2>Napoléon en images : deux visages du pouvoir</h2>
+
+  <p class="lead">
+    Observez les cinq documents suivants. Ils vous aideront à comprendre
+    comment Napoléon construit son pouvoir, conserve certains acquis de
+    la Révolution et impose sa domination en France et en Europe.
+  </p>
+
+  <!-- DOCUMENT 1 -->
+  <article class="image-document">
+    <div class="document-number">DOCUMENT VISUEL 1</div>
+    <h3>Le sacre de Napoléon : un empereur au-dessus de tous ?</h3>
+
+    <figure>
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Le_Sacre_de_Napol%C3%A9on%2C_David%2C_1804.jpg"
+        alt="Le sacre de Napoléon peint par Jacques-Louis David"
+        loading="lazy">
+      <figcaption>
+        Jacques-Louis David, Le Sacre de Napoléon, peint entre 1805 et 1807.
+        Musée du Louvre.
+      </figcaption>
+    </figure>
+
+    <p>
+      Le 2 décembre 1804, Napoléon est sacré empereur à Notre-Dame de Paris.
+      Le tableau représente le moment où il couronne Joséphine impératrice.
+      Napoléon tient lui-même la couronne impériale.
+    </p>
+
+    <div class="observation">
+      <strong>À VOUS D'OBSERVER</strong>
+      <p>1. Qui est représenté au centre de la scène ?</p>
+      <p>2. Quels éléments montrent la richesse et la puissance de l'empereur ?</p>
+      <p>3. Pourquoi cette cérémonie rappelle-t-elle les traditions des anciennes monarchies ?</p>
+
+      <details>
+        <summary>Voir quelques pistes de réponse</summary>
+        <p>
+          Napoléon occupe une place centrale. Les vêtements luxueux, les
+          couronnes, les insignes et la présence du pape montrent la
+          puissance et le prestige du nouvel empereur. La cérémonie reprend
+          des traditions monarchiques et religieuses. Napoléon devient
+          empereur et fonde une dynastie.
+        </p>
+      </details>
+    </div>
+  </article>
+
+  <!-- DOCUMENT 2 -->
+  <article class="image-document">
+    <div class="document-number">DOCUMENT VISUEL 2</div>
+    <h3>Le Code civil : un héritage de la Révolution</h3>
+
+    <figure>
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Code_Napol%C3%A9on.jpg"
+        alt="Édition originale du Code Napoléon"
+        loading="lazy">
+      <figcaption>
+        Édition originale du Code Napoléon, publiée en 1807.
+      </figcaption>
+    </figure>
+
+    <p>
+      Le Code civil est adopté en 1804. Il rassemble les règles qui
+      organisent la vie des citoyens : mariage, famille, propriété,
+      héritage et contrats.
+    </p>
+
+    <p>
+      Il permet notamment d'unifier les lois françaises et de consolider
+      certains principes révolutionnaires, comme l'égalité devant la loi
+      et la protection de la propriété.
+    </p>
+
+    <div class="observation">
+      <strong>À VOUS DE RÉFLÉCHIR</strong>
+      <p>1. À quoi sert un code de lois ?</p>
+      <p>2. Pourquoi peut-on considérer cette réforme comme un héritage de la Révolution ?</p>
+      <p>3. Le Code civil garantit-il une égalité complète entre les hommes et les femmes ?</p>
+
+      <details>
+        <summary>Voir quelques pistes de réponse</summary>
+        <p>
+          Un code rassemble des lois dans un ensemble organisé.
+          Le Code civil contribue à l'égalité juridique en supprimant
+          les différences de règles selon les régions et en consolidant
+          certains acquis révolutionnaires.
+        </p>
+        <p>
+          Cependant, les femmes mariées sont placées sous l'autorité de
+          leur mari : l'égalité n'est donc pas complète.
+        </p>
+      </details>
+    </div>
+  </article>
+
+  <!-- DOCUMENT 3 -->
+  <article class="image-document">
+    <div class="document-number">DOCUMENT VISUEL 3</div>
+    <h3>L'Europe en 1811 : un Empire immense</h3>
+
+    <figure>
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Europe_map_Napoleon_Blocus.png"
+        alt="Carte de l'Europe napoléonienne en 1811"
+        loading="lazy">
+      <figcaption>
+        Carte de l'Europe napoléonienne en 1811 :
+        territoires annexés, États satellites et pays concernés par le blocus continental.
+        Wikimedia Commons.
+      </figcaption>
+    </figure>
+
+    <p>
+      En 1811, Napoléon domine une grande partie de l'Europe.
+      Certains territoires sont directement intégrés à l'Empire français.
+      D'autres sont dirigés par des souverains qui lui sont soumis.
+    </p>
+
+    <p>
+      Cette domination est obtenue grâce aux conquêtes militaires.
+      Elle permet aussi de diffuser certaines réformes inspirées de
+      la Révolution française.
+    </p>
+
+    <div class="observation">
+      <strong>À VOUS DE REPÉRER</strong>
+      <p>1. Quel pays est au centre de cet Empire ?</p>
+      <p>2. La domination de Napoléon se limite-t-elle au territoire français ?</p>
+      <p>3. Pourquoi peut-on dire que Napoléon impose sa domination aux peuples européens ?</p>
+
+      <details>
+        <summary>Voir quelques pistes de réponse</summary>
+        <p>
+          La France est au centre de l'Empire. La domination napoléonienne
+          s'étend sur une grande partie de l'Europe, notamment en Italie,
+          en Allemagne et dans les territoires voisins.
+        </p>
+        <p>
+          Cette domination repose sur les conquêtes militaires et sur
+          l'installation de souverains dépendants de Napoléon.
+        </p>
+      </details>
+    </div>
+  </article>
+
+  <!-- DOCUMENT 4 -->
+  <article class="image-document">
+    <div class="document-number">DOCUMENT VISUEL 4</div>
+    <h3>En Espagne, les peuples résistent à Napoléon</h3>
+
+    <figure>
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Goya_-_Second_of_May_1808.jpg"
+        alt="Le Deux Mai 1808 peint par Francisco de Goya"
+        loading="lazy">
+      <figcaption>
+        Francisco de Goya, Le Deux Mai 1808, peint en 1814.
+        La révolte de Madrid contre les troupes françaises.
+      </figcaption>
+    </figure>
+
+    <p>
+      En mai 1808, la population de Madrid se soulève contre les troupes
+      françaises. La guerre d'Espagne devient un conflit particulièrement
+      violent et difficile pour Napoléon.
+    </p>
+
+    <p>
+      Les Espagnols refusent l'occupation française et la domination
+      imposée par l'empereur.
+    </p>
+
+    <div class="observation">
+      <strong>À VOUS D'OBSERVER</strong>
+      <p>1. Quels groupes de personnes s'affrontent dans ce tableau ?</p>
+      <p>2. Quelle impression se dégage de la scène ?</p>
+      <p>3. Que nous apprend cette scène sur la domination de Napoléon en Europe ?</p>
+
+      <details>
+        <summary>Voir quelques pistes de réponse</summary>
+        <p>
+          Le tableau représente des insurgés espagnols affrontant des
+          soldats français. La violence de la scène montre que les
+          conquêtes napoléoniennes provoquent des résistances.
+        </p>
+        <p>
+          Les peuples européens ne souhaitent pas tous être dirigés
+          par Napoléon et peuvent combattre l'occupation française.
+        </p>
+      </details>
+    </div>
+  </article>
+
+  <!-- DOCUMENT 5 -->
+  <article class="image-document">
+    <div class="document-number">DOCUMENT VISUEL 5</div>
+    <h3>Le coup d'État de Napoléon : une caricature critique</h3>
+
+    <figure>
+      <img
+        src="https://cdn.loc.gov/service/pnp/ppmsca/07500/07510v.jpg"
+        alt="Caricature anglaise de James Gillray sur le coup d'État du 18 Brumaire"
+        loading="lazy">
+      <figcaption>
+        James Gillray, Exit liberté à la française !,
+        caricature publiée le 21 novembre 1799.
+        Library of Congress.
+      </figcaption>
+    </figure>
+
+    <p>
+      Cette caricature britannique représente le coup d'État du
+      18 Brumaire (9 novembre 1799). Napoléon prend le pouvoir
+      avec l'aide de l'armée. Les députés du Conseil des Cinq-Cents
+      sont chassés sous la menace des soldats.
+    </p>
+
+    <p>
+      L'image critique la manière dont Napoléon arrive au pouvoir
+      et montre le rôle de la force militaire dans cette prise de pouvoir.
+    </p>
+
+    <div class="observation">
+      <strong>À VOUS D'OBSERVER</strong>
+      <p>1. Quel rôle jouent les soldats dans cette scène ?</p>
+      <p>2. Que deviennent les représentants du peuple ?</p>
+      <p>3. Pourquoi cette caricature peut-elle être utilisée pour dénoncer un pouvoir autoritaire ?</p>
+
+      <details>
+        <summary>Voir quelques pistes de réponse</summary>
+        <p>
+          Les soldats utilisent la force pour chasser les députés.
+          Les représentants ne peuvent plus exercer librement leur rôle.
+        </p>
+        <p>
+          La caricature dénonce une prise de pouvoir par la force
+          militaire, contraire au fonctionnement normal d'un régime
+          représentatif.
+        </p>
+      </details>
+    </div>
+  </article>
+
+  <div class="remember">
+    <h3>Le bilan des cinq documents</h3>
+    <p>
+      Ces images montrent les contradictions du régime napoléonien.
+      Napoléon conserve et diffuse certains principes de la Révolution,
+      mais il rétablit un pouvoir personnel, limite les libertés
+      politiques et impose sa domination aux peuples européens.
+    </p>
+    <p>
+      <strong>La question à retenir :</strong> peut-on diffuser les idées
+      de liberté et d'égalité tout en imposant sa domination par la force ?
+    </p>
+  </div>
+
+</section>
+<!-- FIN DU DOSSIER ICONOGRAPHIQUE -->
+
+
+</main>
+
+<footer>
+  Histoire · Première STI2D / STI2A<br>
+  Parcours pédagogique : Napoléon et l'héritage de la Révolution française
+</footer>
+
+<script>
+
+function getAnswer(name) {
+  const selected = document.querySelector('input[name="' + name + '"]:checked');
+  return selected ? selected.value : null;
+}
+
+function feedback(id, good, message) {
+  const element = document.getElementById(id);
+  element.className = "feedback " + (good ? "correct" : "incorrect");
+  element.textContent = message;
+}
+
+function checkQuiz1() {
+  const answers = [
+    {name:"q1", correct:"c", id:"f1", explanation:"1799 : Napoléon prend le pouvoir lors du coup d'État du 18 Brumaire."},
+    {name:"q2", correct:"c", id:"f2", explanation:"1804 : Napoléon devient empereur des Français."},
+    {name:"q3", correct:"b", id:"f3", explanation:"Un pouvoir héréditaire se transmet au sein d'une même famille."}
+  ];
+
+  let score = 0;
+
+  answers.forEach(a => {
+    const response = getAnswer(a.name);
+
+    if (!response) {
+      feedback(a.id, false, "Vous n'avez pas répondu à cette question.");
+    } else if (response === a.correct) {
+      score++;
+      feedback(a.id, true, "Bonne réponse ! " + a.explanation);
+    } else {
+      feedback(a.id, false, "Ce n'est pas la bonne réponse. " + a.explanation);
+    }
+  });
+
+  document.getElementById("score1").textContent =
+    "Votre résultat : " + score + "/3";
+}
+
+function checkCode() {
+  const response = getAnswer("codecivil");
+
+  if (!response) {
+    feedback("codeFeedback", false, "Veuillez choisir une réponse.");
+  } else if (response === "b") {
+    feedback("codeFeedback", true,
+      "Exactement ! Le Code civil conserve certains acquis de la Révolution, mais maintient des inégalités entre les hommes et les femmes.");
+  } else {
+    feedback("codeFeedback", false,
+      "Pas tout à fait. Les femmes mariées sont placées sous l'autorité de leur mari. Le Code civil n'assure donc pas une égalité complète.");
+  }
+}
+
+function checkClassement() {
+  const answers = [
+    {id:"cl1", correct:"rev", feedback:"cf1", explanation:"L'égalité devant la loi est un principe de la Révolution."},
+    {id:"cl2", correct:"aut", feedback:"cf2", explanation:"La censure limite la liberté de la presse."},
+    {id:"cl3", correct:"rev", feedback:"cf3", explanation:"L'unification des lois prolonge l'égalité juridique."},
+    {id:"cl4", correct:"aut", feedback:"cf4", explanation:"La concentration des pouvoirs caractérise un régime autoritaire."},
+    {id:"cl5", correct:"lim", feedback:"cf5", explanation:"Le Code civil maintient une inégalité entre les hommes et les femmes."}
+  ];
+
+  let score = 0;
+
+  answers.forEach(a => {
+    const response = document.getElementById(a.id).value;
+
+    if (!response) {
+      feedback(a.feedback, false, "Vous n'avez pas répondu à cette question.");
+    } else if (response === a.correct) {
+      score++;
+      feedback(a.feedback, true, "Bonne réponse ! " + a.explanation);
+    } else {
+      feedback(a.feedback, false, "Réponse attendue : " +
+        (a.correct === "rev" ? "Principe révolutionnaire. " :
+         a.correct === "aut" ? "Pouvoir autoritaire. " :
+         "Une limite à l'égalité. ") + a.explanation);
+    }
+  });
+
+  document.getElementById("scoreClassement").textContent =
+    "Votre résultat : " + score + "/5";
+}
+
+function checkParadoxe() {
+  const response = getAnswer("paradoxe");
+
+  if (!response) {
+    feedback("paradoxeFeedback", false, "Veuillez choisir une réponse.");
+  } else if (response === "a") {
+    feedback("paradoxeFeedback", true,
+      "Bravo ! Napoléon impose un souverain de sa famille. Les habitants ne choisissent donc pas librement leur dirigeant.");
+  } else {
+    feedback("paradoxeFeedback", false,
+      "Ce n'est pas la bonne réponse. La contradiction vient du fait que Napoléon impose son frère comme roi, au lieu de laisser les habitants choisir leur dirigeant.");
+  }
+}
+
+function checkJury() {
+  const answers = [
+    {id:"j1", correct:"h", feedback:"jf1", explanation:"L'égalité devant la loi est un acquis révolutionnaire."},
+    {id:"j2", correct:"f", feedback:"jf2", explanation:"La censure remet en cause la liberté de la presse."},
+    {id:"j3", correct:"h", feedback:"jf3", explanation:"La suppression de certains privilèges féodaux diffuse des principes révolutionnaires."},
+    {id:"j4", correct:"f", feedback:"jf4", explanation:"Le pouvoir héréditaire rétablit un principe monarchique."},
+    {id:"j5", correct:"f", feedback:"jf5", explanation:"La domination militaire contredit la liberté des peuples."},
+    {id:"j6", correct:"h", feedback:"jf6", explanation:"La liberté de religion est un principe issu de la Révolution."}
+  ];
+
+  let score = 0;
+
+  answers.forEach(a => {
+    const response = document.getElementById(a.id).value;
+
+    if (!response) {
+      feedback(a.feedback, false, "Vous n'avez pas répondu.");
+    } else if (response === a.correct) {
+      score++;
+      feedback(a.feedback, true, "Bonne réponse ! " + a.explanation);
+    } else {
+      feedback(a.feedback, false,
+        "Réponse attendue : " +
+        (a.correct === "h" ? "Héritier de la Révolution. " : "Fossoyeur de la Révolution. ") +
+        a.explanation);
+    }
+  });
+
+  document.getElementById("juryScore").textContent =
+    "Verdict : " + score + "/6 bonnes réponses. " +
+    (score === 6 ? "Excellent travail !" :
+     score >= 4 ? "Bon travail ! Relisez les explications des erreurs." :
+     "Prenez le temps de revoir le bilan du parcours.");
+}
+
+</script>
+
+</body>
+</html>
